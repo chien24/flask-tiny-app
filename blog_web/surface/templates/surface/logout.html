@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Logout</title>
+  </head>
+  <body>
+    <h1>Do you want to logout?</h1>
+    
+    <!-- Hiển thị thông báo nếu có -->
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <!-- Form xác nhận logout -->
+    <form action="{% url 'surface:logout' %}" method="post">
+      {% csrf_token %}
+      <label for="confirm_yes">Yes</label>
+      <input type="radio" id="confirm_yes" name="confirm" value="yes" required><br>
+      
+      <label for="confirm_no">No</label>
+      <input type="radio" id="confirm_no" name="confirm" value="no"><br>
+      
+      <input type="submit" value="Submit">
+    </form>
+
+    <!-- Liên kết quay lại -->
+    <p><a href="{% url 'surface:home' %}">Back to home page</a></p>
+  </body>
+</html>
