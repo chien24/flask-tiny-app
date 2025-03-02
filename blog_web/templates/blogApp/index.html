@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!-- TITLE BLOCK -->
+{% block title %}HOME{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'blogApp/CSS/index.css' %}">
+{% endblock %}
+
+
+
+<!-- BODY BLOCK -->
+{% block body %}
+<!-- header -->
+<header>
+    <!-- SEARCH BAR -->
+    <div class="search">
+        <form action="" method="get">
+            <input type="text" name="q" id="search-title" placeholder="Enter title..." value="{{ request.GET.q }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</header>
+
+<!-- CONTENT POSTs -->
+<main class="content">
+    <!-- LIST POST -->
+    {% for post in posts %}
+    <div class="post-content {{post.author.id}}">
+        <p>
+            <strong>{{post.title}}</strong>
+        </p>
+        <p>{{post.content}}</p>
+        <i>{{post.date_create}}</i>
+        <a href="{% url 'blogApp:delete' post.id %}">Delete</a>
+        <a href="{% url 'blogApp:update' post.id %}">Update</a>
+        <hr>
+    </div>
+    {% empty %}
+    <p>There aren't any posts at the moment.</p>
+    {% endfor %}
+</main>
+
+<div class="create-newpost-button-block">
+    <a href="{% url 'blogApp:create' %}"><button style="margin-top: 10px;" class="create-newpost-button">New Post</button></a>
+</div>
+{% endblock %}
+

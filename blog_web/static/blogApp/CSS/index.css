@@ -1,0 +1,175 @@
+/* Định dạng thanh navigation */
+nav {
+    background-color: #2c3e50;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #3498db;
+}
+
+/* Định dạng thông báo (messages) */
+p i {
+    display: block;
+    text-align: center;
+    color: #e74c3c;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* Định dạng header (thanh tìm kiếm) */
+header {
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-bottom: 1px solid #ddd;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.search form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.search input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 70%;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search input[type="text"]:focus {
+    border-color: #3498db;
+}
+
+.search button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.search button:hover {
+    background-color: #2980b9;
+}
+
+/* Định dạng phần nội dung chính (content) */
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+
+
+/* Định dạng mỗi bài post */
+.post-content {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-content p {
+    margin-bottom: 10px;
+}
+
+.post-content strong {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.post-content i {
+    display: block;
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.post-content a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.post-content a[href*="delete"] {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.post-content a[href*="delete"]:hover {
+    background-color: #c0392b;
+}
+
+.post-content a[href*="update"] {
+    background-color: #f1c40f;
+    color: white;
+}
+
+.post-content a[href*="update"]:hover {
+    background-color: #d4ac0d;
+}
+
+/* Định dạng checkbox */
+.select-post {
+    margin-right: 10px;
+}
+
+/* Thông báo khi không có bài post */
+.content p {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Định dạng nút tạo bài post mới */
+.create-newpost-button-block {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.create-newpost-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.create-newpost-button:hover {
+    background-color: #2980b9;
+}
+
+/* Định dạng hr (đường kẻ ngang) */
+hr {
+    border: none;
+   border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
