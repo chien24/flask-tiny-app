@@ -1,0 +1,72 @@
+/* Reset cơ bản nếu reset.css chưa có */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Định dạng tiêu đề */
+h2 {
+    text-align: center;
+    margin: 40px 0;
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* Định dạng form xác nhận xóa */
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Định dạng nút "Yes, delete" */
+form button[type="submit"] {
+    padding: 12px 25px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Định dạng liên kết "Cancel" */
+a {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 25px;
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+}
+
+/* Định dạng container chính (nếu cần căn giữa) */
+form, a {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto 15px;
+}
