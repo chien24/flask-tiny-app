@@ -10,28 +10,18 @@
         {% block head %}{% endblock %}
     </head>
     <body>
-        <header>
-            <nav>
-                <div class="nav_home">
-                    <a href="{% url 'blogApp:home' %}">Home</a>
-                </div>
-    
-                <div class="nav_account">
-                    {% if user.is_authenticated %}
-                    <span>Hello, <i>{{user.username}}</i></span>
-                    <a href="{% url 'accounts:signout' %}">Sign out</a>
-                    {% else %}
-                    <a href="{% url 'accounts:signin' %}">Sign in</a>
-                    <a href="{% url 'accounts:signup' %}">Sign up</a>
-                    {% endif %}
-                </div>
-            </nav>
-        </header>
-        
+        <nav>
+            <a href="{% url 'blogApp:home' %}">Home</a>
+            {% if user.is_authenticated %}
+            <span>Hello, <i>{{user.username}}</i></span>
+            <a href="{% url 'accounts:signout' %}">Sign out</a>
+            {% else %}
+            <a href="{% url 'accounts:signin' %}">Sign in</a>
+            <a href="{% url 'accounts:signup' %}">Sign up</a>
+            {% endif %}
+        </nav>
         {% for message in messages %}
-        <div class="message">
-            <p><i>{{message}}</i></p>
-        </div>
+        <p><i>{{message}}</i></p>
         {% endfor %}
         
         {% block body %}{% endblock %}

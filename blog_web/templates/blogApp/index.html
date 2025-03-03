@@ -12,25 +12,26 @@
 
 <!-- BODY BLOCK -->
 {% block body %}
-<!-- SEARCH BAR -->
-<div class="search">
-    <form action="" method="get">
-        <input type="text" name="q" id="search-title" placeholder="Enter title..." value="{{ request.GET.q }}">
-        <button type="submit">Search</button>
-    </form>
-</div>
+<!-- header -->
+<header>
+    <!-- SEARCH BAR -->
+    <div class="search">
+        <form action="" method="get">
+            <input type="text" name="q" id="search-title" placeholder="Enter title..." value="{{ request.GET.q }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</header>
 
 <!-- CONTENT POSTs -->
 <main class="content">
     <!-- select user post -->
-    <div class="button-select-from-user">
-        {% if user.is_authenticated %}
-        <button class="select-mypost-button">My posts</button>
-        {% endif %}
-        
-        <button class="select-button select" id="select-button" style="margin-top: 10px;">Select</button>
-        <button class="select-all-button select">Select All</button>
-    </div>
+    {% if user.is_authenticated %}
+    <button class="select-mypost-button">My posts</button>
+    {% endif %}
+
+    <button class="select-button select" id="select-button" style="margin-top: 10px;">Select</button>
+    <button class="select-all-button select">Select All</button>
     <form action="{% url 'blogApp:delete-list-posts' %}" method="post">
         {% csrf_token %}
         <!-- LIST POST -->
