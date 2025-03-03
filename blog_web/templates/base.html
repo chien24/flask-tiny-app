@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'reset.css' %}">
-        <link rel="stylesheet" href="{% static 'base.css' %}">
         {% block head %}{% endblock %}
     </head>
     <body>
@@ -34,6 +33,7 @@
             <p><i>{{message}}</i></p>
         </div>
         {% endfor %}
+        
         {% block body %}{% endblock %}
 
         {% block script %}{% endblock %}
