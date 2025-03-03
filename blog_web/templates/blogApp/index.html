@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="{% static 'blogApp/CSS/index.css' %}">
 {% endblock %}
 
+
+
 <!-- BODY BLOCK -->
 {% block body %}
 <!-- header -->
@@ -59,14 +61,3 @@
 </div>
 {% endblock %}
 
-
-{% block script %}
-<script>
-    {% if user.is_authenticated %}
-    window.UserID = {{user.id}};
-    {% else %}
-    window.UserID = null;
-    {% endif %}
-</script>
-<script src="{% static 'blogApp/JS/index.js' %}"></script>
-{% endblock %}

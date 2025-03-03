@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'blogApp.apps.BlogappConfig',
-    'accounts.apps.AccountsConfig',
 
 ]
 
@@ -128,6 +127,3 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# chuyển hướng người dùng tới trang đang nhập khi chưa đang nhập
-LOGIN_URL = '/accounts/signin'
