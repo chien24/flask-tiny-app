@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{%  load static %}
+
+<!-- TITLE BLOCK -->
+{% block title %}CREATE POST{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'blogApp/CSS/create.css' %}">
+{% endblock %}
+
+<!-- BODY BLOCK -->
+{% block body %}
+<h1>CREATE POST</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="title-form">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" placeholder="Enter title...">
+    </div>
+    <div class="content-form">
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" placeholder="Enter content..."></textarea>
+    </div>
+    <input type="submit" value="Create">
+</form>
+<a href="{% url 'blogApp:home' %}"><button>Cancel</button></a>
+
+{% endblock %}
