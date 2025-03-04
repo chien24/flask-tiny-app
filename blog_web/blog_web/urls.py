@@ -17,7 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
+
+app_name = 'surface'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('surface.urls', namespace='surface')),
+    path('surface/', include('surface.urls')),
+    path('', include('blogApp.urls')),
+
 ]

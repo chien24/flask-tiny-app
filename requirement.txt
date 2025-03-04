@@ -1,2 +1,1 @@
-Các thư viện cần được cài đặt trước khi chạy:
-- Django
+django==5.1.4

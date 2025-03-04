@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from surface.models import UserBlog  
 
-def index(request):
-    return render(request, 'surface/index.html')
+
+
 
 def register(request):
     if request.method == 'GET':
@@ -33,7 +33,7 @@ def register(request):
 
     return redirect('surface:login')
 
-def login_view(request):  
+def login_view(request):
     if request.method == 'GET':
         return render(request, 'surface/login.html')
 
@@ -50,7 +50,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successfully!')
-            return redirect('surface:home')
+            return redirect('blogApp:home')
         else:
             messages.error(request, 'Username or Password is incorrect.')
             return render(request, 'surface/login.html')
@@ -64,13 +64,9 @@ def logout_action(request):
         if confirm == 'yes':
             logout(request)
             messages.success(request, 'Logout successfully!')
-            return redirect('surface:index')
+            return redirect('blogApp:home')
         else:  # confirm == 'no' hoặc không chọn
-            return redirect('surface:home')
+            return redirect('blogApp:home')
     
     # Nếu là GET, hiển thị trang chủ
     return render(request, 'surface/logout.html')
-
-
-def home(request):
-    return render(request, 'surface/home.html')

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!-- TITLE BLOCK -->
+{% block title %}HOME{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'blogApp/CSS/index.css' %}">
+{% endblock %}
+
+
+
+<!-- BODY BLOCK -->
+{% block body %}
+<!-- header -->
+<header>
+    <!-- SEARCH BAR -->
+    <div class="search">
+        <form action="" method="get">
+            <input type="text" name="q" id="search-title" placeholder="Enter title..." value="{{ request.GET.q }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</header>
+
+<!-- CONTENT POSTs -->
+<main class="content">
+    <!-- select user post -->
+    {% if user.is_authenticated %}
+    <button class="select-mypost-button">My posts</button>
+    {% endif %}
+
+    <button class="select-button select" id="select-button">Select</button>
+    <button class="select-all-button select">Select All</button>
+    <form action="{% url 'blogApp:delete-list-posts' %}" method="post">
+        {% csrf_token %}
+        <!-- LIST POST -->
+        {% for post in page_obj %}
+        <div class="post-content {{post.author.id}}">
+            <p class="title">
+                <input type="checkbox" name="post-select" id="post{{post.id}}" class="post-select-checkbox select post-select-checkbox{{post.author.id}}" value="{{post.id}}">
+                <strong>{{post.title}}</strong>
+            </p>
+            <p class="content-post">{{post.content}}</p>
+            <i>{{post.date_create}} - Create by, <strong>{% if user == post.author %}You{% else %}{{post.author}}{% endif %}</strong></i>
+            {% if user == post.author %}
+            <a href="{% url 'blogApp:delete' post.id %}">Delete</a>
+            <a href="{% url 'blogApp:update' post.id %}">Update</a>
+            {% endif %}
+            <hr>
+        </div>
+        {% empty %}
+        <p>There aren't any posts at the moment.</p>
+        {% endfor %}
+        <input type="submit" value="Delete" style="margin-bottom: 10px;" class="delete-select-button select">
+    </form>
+</main>
+
+<div class="create-newpost-button-block">
+    <a href="{% url 'blogApp:create' %}"><button style="margin-top: 10px;" class="create-newpost-button">New Post</button></a>
+</div>
+
+<div class="paginator">
+    {% if page_obj.has_previous %}
+        <a href="?page=1&q={{request.GET.q}}"><button>First</button></a>
+        <a href="?page={{ page_obj.previous_page_number }}&q={{request.GET.q}}"><button>Previous</button></a>
+    {% else %}
+        <button disabled>First</button>
+        <button disabled>Previous</button>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        </span>
+        
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}&q={{request.GET.q}}"><button>Next</button></a>
+        <a href="?page={{ page_obj.paginator.num_pages }}&q={{request.GET.q}}"><button>Last</button></a>
+    {% else %}
+        <button disabled>Next</button>
+        <button disabled>Last</button>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+
+<!-- JAVASCRIPTS -->
+{% block script %}
+<script>
+    {% if user.is_authenticated %}
+    window.UserID = {{user.id}};
+    {% else %}
+    window.UserID = null;
+    {% endif %}
+</script>
+<script src="{% static 'blogApp/JS/index.js' %}"></script>
+{% endblock %}
