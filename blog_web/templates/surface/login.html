@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}SIGN IN{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'surface/CSS/signin_signup.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="body">
+    {% if request.GET.next %}
+    <div class="message">
+        <p><i>Hãy đăng nhập trước khi thực hiện chức năng!</i></p>
+    </div>
+    {% endif %}
+    <h1>SIGN IN</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-username">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required placeholder="Enter username...">
+        </div>
+        <div class="form-password">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required placeholder="Enter password...">
+        </div>
+        <input type="submit" value="Sign in">
+    </form>
+    <p style="margin-top: 20px;">You don't have an accounts yet? Sign up <a href="{% url 'surface:register' %}">here.</a></p>
+</div>
+{% endblock %}
