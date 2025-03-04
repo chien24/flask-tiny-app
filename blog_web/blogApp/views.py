@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-
-# Create your views here.
-=======
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
@@ -67,4 +62,3 @@ def updatePost(request, post_id):
         return redirect('blogApp:home')
 
     return render(request, 'blogApp/update.html', {"post":post})
->>>>>>> 730db12332ba944990357689b75868111dcd44c3
