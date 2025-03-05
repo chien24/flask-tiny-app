@@ -6,6 +6,7 @@ from django.core.paginator import Paginator
 
 
 from .models import Post
+from accountApp.models import UserBlog
 
 
 
@@ -76,3 +77,14 @@ def updatePost(request, post_id):
         return redirect('blogApp:home')
 
     return render(request, 'blogApp/update.html', {"post":post})
+
+
+@login_required
+def get_my_post(request):
+    user = get_object_or_404(UserBlog, pk=request.user.id)
+    posts = Post.objects.filter(author=user).order_by('-date_create')
+    items_per_page = 10
+    paginator = Paginator(posts, items_per_page)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'blogApp/index.html', {'page_obj':page_obj, 'user':user})

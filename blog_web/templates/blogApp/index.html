@@ -27,7 +27,7 @@
 <main class="content">
     <!-- select user post -->
     {% if user.is_authenticated %}
-    <button class="select-mypost-button">My posts</button>
+    <a href="{% url 'blogApp:get-my-post' %}"><button class="select-mypost-button">My posts</button></a>
     {% endif %}
 
     <button class="select-button select" id="select-button" style="margin-top: 10px;">Select</button>
