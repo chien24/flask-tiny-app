@@ -29,7 +29,6 @@
     {% for post in posts %}
     <div class="post-content {{post.author.id}}">
         <p>
-            <input type="checkbox" name="post-select" id="post{{post.id}}" class="post-select-checkbox select post-select-checkbox{{post.author.id}}" value="{{post.id}}">
             <strong>{{post.title}}</strong>
         </p>
         <p>{{post.content}}</p>
