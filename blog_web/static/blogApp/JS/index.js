@@ -25,15 +25,15 @@ if (window.UserID){
                     element.style.display = 'none';
                 }
             });
-            select_mypost_button.textContent = 'All posts';
-            select_button.style.display = 'inline-block';
+            // select_mypost_button.textContent = 'All posts';
+            // select_button.style.display = 'inline-block';
             select_all_button.textContent = 'Select All';
         }else{
             post_content_list.forEach(element => {
                 element.style.display = 'block';
             });
-            select_mypost_button.textContent = 'My posts';
-            select_button.style.display = 'none';
+            // select_mypost_button.textContent = 'My posts';
+            // select_button.style.display = 'none';
             select_list.forEach(element => {
                 element.style.display = 'none';
             });
