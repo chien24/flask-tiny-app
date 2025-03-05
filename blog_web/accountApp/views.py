@@ -45,9 +45,8 @@ def login_view(request):
             messages.error(request, 'Username and Password are required.')
             return render(request, 'account/login.html')
         
-        user = UserBlog.objects.get(username=username)
-        
-        if user is not None:
+        if UserBlog.objects.filter(username=username).exists():
+            user = UserBlog.objects.get(username=username)
             if user.is_active is False:
                 messages.success(request, 'Your account was banned! Contact admin now.')
                 return render(request, 'account/login.html')
@@ -56,13 +55,6 @@ def login_view(request):
                 login(request, user)
                 messages.success(request, 'Login successfully!')
                 return redirect('blogApp:home')
-            messages.error(request, 'Username or Password is incorrect.')
-            return render(request, 'account/login.html')
-        else:
-            messages.error(request, 'Username or Password is incorrect.')
-            return render(request, 'account/login.html')
-    
-    return render(request, 'account/login.html')
 
 def logout_action(request):
 
