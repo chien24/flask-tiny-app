@@ -19,11 +19,11 @@ from django.urls import path, include
 
 
 
-app_name = 'surface'
+app_name = 'accountApp'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('surface/', include('surface.urls')),
+    path('account/', include('accountApp.urls')),
     path('', include('blogApp.urls')),
 
 ]

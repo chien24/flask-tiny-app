@@ -5,7 +5,7 @@
 {% block title %}SIGN UP{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'surface/CSS/signin_signup.css' %}">
+<link rel="stylesheet" href="{% static 'accountApp/CSS/signin_signup.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -35,7 +35,7 @@
 
         <input type="submit" value="Sign up">
     </form>
-    <p style="margin-top: 20px;">You have an account already? Sign in <a href="{% url 'surface:login' %}">here.</a></p>
+    <p style="margin-top: 20px;">You have an account already? Sign in <a href="{% url 'account:login' %}">here.</a></p>
 </div>
 
 {% endblock %}

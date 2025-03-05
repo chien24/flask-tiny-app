@@ -16,7 +16,7 @@
     {% endif %}
 
     <!-- Form xác nhận logout -->
-    <form action="{% url 'surface:logout' %}" method="post">
+    <form action="{% url 'account:logout' %}" method="post">
       {% csrf_token %}
       <label for="confirm_yes">Yes</label>
       <input type="radio" id="confirm_yes" name="confirm" value="yes" required><br>

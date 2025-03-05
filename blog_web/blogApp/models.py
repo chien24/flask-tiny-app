@@ -1,6 +1,6 @@
 from django.db import models
 
-from surface.models import UserBlog
+from accountApp.models import UserBlog
 
 
 

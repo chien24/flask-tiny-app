@@ -18,10 +18,10 @@
             <div class="nav-accounts">
                 {% if user.is_authenticated %}
                 <span>Hello, <i>{{user.username}}</i></span>
-                <a href="{% url 'surface:logout' %}">Sign out</a>
+                <a href="{% url 'account:logout' %}">Sign out</a>
                 {% else %}
-                <a href="{% url 'surface:login' %}">Sign in</a>
-                <a href="{% url 'surface:register' %}">Sign up</a>
+                <a href="{% url 'account:login' %}">Sign in</a>
+                <a href="{% url 'account:register' %}">Sign up</a>
                 {% endif %}
             </div>
         </nav>
