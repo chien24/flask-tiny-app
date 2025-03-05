@@ -16,23 +16,12 @@ def index(request):
     else:
         posts = Post.objects.all().order_by('-date_create')
     
-    items_per_page = 2
+    items_per_page = 10
     paginator = Paginator(posts, items_per_page)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'blogApp/index.html', {'page_obj':page_obj })
-
-
-# blogs = Blog.objects.all()
-# items_per_page = 5
-# paginator = Paginator(blogs, items_per_page)
-
-# # Lấy số trang từ query string (ví dụ: ?page=2)
-# page_number = request.GET.get('page')
-# page_obj = paginator.get_page(page_number)
-
-# return render(request, 'blog/index.html', {'blogs':page_obj})
 
 
 @login_required

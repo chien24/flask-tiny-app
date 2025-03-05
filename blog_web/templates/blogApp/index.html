@@ -30,7 +30,7 @@
     <button class="select-mypost-button">My posts</button>
     {% endif %}
 
-    <button class="select-button select" id="select-button">Select</button>
+    <button class="select-button select" id="select-button" style="margin-top: 10px;">Select</button>
     <button class="select-all-button select">Select All</button>
     <form action="{% url 'blogApp:delete-list-posts' %}" method="post">
         {% csrf_token %}

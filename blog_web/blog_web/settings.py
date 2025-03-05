@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'surface',
+    'accountApp',
     'blogApp.apps.BlogappConfig',
 
 ]
@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = 'surface.UserBlog'
+AUTH_USER_MODEL = 'accountApp.UserBlog'
 
 
-LOGIN_URL = '/surface/login'
+LOGIN_URL = '/account/login'
