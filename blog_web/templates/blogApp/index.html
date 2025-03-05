@@ -61,3 +61,15 @@
 </div>
 {% endblock %}
 
+
+<!-- JAVASCRIPTS -->
+{% block script %}
+<script>
+    {% if user.is_authenticated %}
+    window.UserID = {{user.id}};
+    {% else %}
+    window.UserID = null;
+    {% endif %}
+</script>
+<script src="{% static 'blogApp/JS/index.js' %}"></script>
+{% endblock %}

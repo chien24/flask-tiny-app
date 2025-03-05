@@ -7,23 +7,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{% static 'reset.css' %}">
+        <link rel="stylesheet" href="{% static 'base.css' %}">
         {% block head %}{% endblock %}
     </head>
     <body>
         <nav>
-            <a href="{% url 'blogApp:home' %}">Home</a>
-            {% if user.is_authenticated %}
-            <span>Hello, <i>{{user.username}}</i></span>
-            <a href="{% url 'accounts:signout' %}">Sign out</a>
-            {% else %}
-            <a href="{% url 'accounts:signin' %}">Sign in</a>
-            <a href="{% url 'accounts:signup' %}">Sign up</a>
-            {% endif %}
+            <div class="nav-home">
+                <a href="{% url 'blogApp:home' %}">Home</a>
+            </div>
+            <div class="nav-accounts">
+                {% if user.is_authenticated %}
+                <span>Hello, <i>{{user.username}}</i></span>
+                <a href="{% url 'account:logout' %}">Sign out</a>
+                {% else %}
+                <a href="{% url 'account:login' %}">Sign in</a>
+                <a href="{% url 'account:register' %}">Sign up</a>
+                {% endif %}
+            </div>
         </nav>
         {% for message in messages %}
-        <p><i>{{message}}</i></p>
+        <div class="message">
+            <p><i>{{message}}</i></p>
+        </div>
         {% endfor %}
-        
         {% block body %}{% endblock %}
 
         {% block script %}{% endblock %}

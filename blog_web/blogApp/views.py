@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.urls import reverse_lazy
+
 
 from .models import Post
 
@@ -17,16 +18,19 @@ def index(request):
     return render(request, 'blogApp/index.html', {'posts':posts })
 
 
+@login_required
 def create(request):
     if request.method == 'POST':
         title = request.POST['title']
         content = request.POST['content']
-        Post.objects.create(title=title, content=content)
+        author = request.user
+        Post.objects.create(title=title, content=content, author=author)
         messages.success(request, 'Create Completed.')
-        return redirect('blogApp:home')
+        return redirect(reverse_lazy('blogApp:home'))
     return render(request, 'blogApp/create.html')
 
 
+@login_required
 def deletePost(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     
@@ -38,6 +42,7 @@ def deletePost(request, post_id):
     return render(request, 'blogApp/confirm_delete.html', {'post':post})
 
 
+@login_required
 def deleteListPost(request):
     if request.method=='POST':
         list_post_id = request.POST.getlist('select-post')
@@ -52,6 +57,7 @@ def deleteListPost(request):
     return redirect('blogApp:home')
 
 
+@login_required
 def updatePost(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
