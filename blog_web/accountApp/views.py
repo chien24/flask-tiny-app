@@ -57,7 +57,6 @@ def login_view(request):
                 return redirect('blogApp:home')
 
 def logout_action(request):
-
     if request.method == 'POST':
         confirm = request.POST.get('confirm')
         if confirm == 'yes':
