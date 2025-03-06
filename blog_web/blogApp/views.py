@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.core.paginator import Paginator
+
 
 from .models import Post
+from accountApp.models import UserBlog
 
 
 
@@ -11,20 +16,28 @@ def index(request):
         posts = Post.objects.filter(title__icontains=query).order_by('-date_create')
     else:
         posts = Post.objects.all().order_by('-date_create')
+    
+    items_per_page = 10
+    paginator = Paginator(posts, items_per_page)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
-    return render(request, 'blogApp/index.html', {'posts':posts })
+    return render(request, 'blogApp/index.html', {'page_obj':page_obj })
 
 
+@login_required
 def create(request):
     if request.method == 'POST':
         title = request.POST['title']
         content = request.POST['content']
-        Post.objects.create(title=title, content=content)
+        author = request.user
+        Post.objects.create(title=title, content=content, author=author)
         messages.success(request, 'Create Completed.')
-        return redirect('blogApp:home')
+        return redirect(reverse_lazy('blogApp:home'))
     return render(request, 'blogApp/create.html')
 
 
+@login_required
 def deletePost(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     
@@ -36,6 +49,7 @@ def deletePost(request, post_id):
     return render(request, 'blogApp/confirm_delete.html', {'post':post})
 
 
+@login_required
 def deleteListPost(request):
     if request.method=='POST':
         list_post_id = request.POST.getlist('select-post')
@@ -50,6 +64,7 @@ def deleteListPost(request):
     return redirect('blogApp:home')
 
 
+@login_required
 def updatePost(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
@@ -62,3 +77,14 @@ def updatePost(request, post_id):
         return redirect('blogApp:home')
 
     return render(request, 'blogApp/update.html', {"post":post})
+
+
+@login_required
+def get_my_post(request):
+    user = get_object_or_404(UserBlog, pk=request.user.id)
+    posts = Post.objects.filter(author=user).order_by('-date_create')
+    items_per_page = 10
+    paginator = Paginator(posts, items_per_page)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'blogApp/index.html', {'page_obj':page_obj, 'user':user})
