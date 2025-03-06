@@ -14,7 +14,7 @@
     {% csrf_token %}
     <button type="submit">Yes, delete</button>
   </form>
-  <a href="{% url 'blogApp:home' %}">Cancel</a>
+  <a class="cancel" href="{% url 'blogApp:home' %}">Cancel</a>
 {% endblock %}
 
 

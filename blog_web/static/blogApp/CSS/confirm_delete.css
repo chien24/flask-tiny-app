@@ -46,7 +46,7 @@ form button[type="submit"]:hover {
 }
 
 /* Định dạng liên kết "Cancel" */
-a {
+a.cancel {
     display: inline-block;
     text-align: center;
     padding: 12px 25px;
@@ -59,13 +59,13 @@ a {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-a:hover {
+a.cancel:hover {
     background-color: #5a6268;
     transform: scale(1.05);
 }
 
 /* Định dạng container chính (nếu cần căn giữa) */
-form, a {
+form, a.cancel {
     display: block;
     max-width: 600px;
     margin: 0 auto 15px;
