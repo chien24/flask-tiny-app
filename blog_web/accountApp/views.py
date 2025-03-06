@@ -55,6 +55,8 @@ def login_view(request):
                 login(request, user)
                 messages.success(request, 'Login successfully!')
                 return redirect('blogApp:home')
+        messages.error(request, 'Invalid username or password!')
+        return render(request, 'account/login.html')
 
 def logout_action(request):
 
