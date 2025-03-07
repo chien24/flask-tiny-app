@@ -26,6 +26,4 @@ COPY ./ ./
 EXPOSE 8000
 
 # Run the application
-# CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
-# CMD ['gunicorn', 'blog_web.wsgi']
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "blog_web.wsgi:application"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]

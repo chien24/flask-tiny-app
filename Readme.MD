@@ -23,7 +23,7 @@ Viết một số website viết các blog đơn giản với Django, có các c
 - Mở Git Bash, tạo thư mục để lưu dự án: ```mkdir blogApp && cd blogApp/```
 - Clone dự án ở repository github: ```git clone https://github.com/chien24/flask-tiny-app.git```
 - Di chuyển vào thư mục chứa file **Dockerfile**: ```cd flask-tiny-app/blog_web```
-- Thực hiện build image từ Dockerfile:```Docker build -t blog_app .```
+- Thực hiện build image từ Dockerfile:```docker build -t blog_app .```
 - Nếu không thể build thành công Image có thể download Image từ Docker Hub: ```docker pull hxhoan/blog_app:lattest```
 - Khởi động Image nếu pull từ Docker Hub: ```docker run --name blog_app -p 8000:8000 hxhoan/blog_app:lattest```
 - Khởi động Image nếu tự build image: ```docker run --name blog_app -p 8000:8000 blog_app```
