@@ -66,6 +66,7 @@
 </div>
 
 <div class="paginator">
+{% if page_obj.paginator.num_pages > 1 %}
     {% if page_obj.has_previous %}
         <a href="?page=1&q={{request.GET.q}}"><button>First</button></a>
         <a href="?page={{ page_obj.previous_page_number }}&q={{request.GET.q}}"><button>Previous</button></a>
@@ -85,6 +86,7 @@
         <button disabled>Next</button>
         <button disabled>Last</button>
     {% endif %}
+{% endif %}
 </div>
 
 {% endblock %}
